@@ -1,13 +1,7 @@
 import React from "react";
-import AddToCartBtn from "./AddToCartBtn";
 
 const ProductCard = () => {
-  return (
-    <div>
-      <h3>Product name</h3>
-      <AddToCartBtn />
-    </div>
-  );
+  return <div>Product Card</div>;
 };
 
 export default ProductCard;

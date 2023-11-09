@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
+import { BsHandbag } from "react-icons/bs";
 
 const AddToCartBtn = () => {
   return (
-    <button onClick={() => console.log("Add to cart clicked")}>
-      Add to cart
-    </button>
+    <p className="text-xl cursor-pointer">
+      <BsHandbag />
+    </p>
   );
 };
 

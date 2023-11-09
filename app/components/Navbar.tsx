@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
+import { BsHandbag } from "react-icons/bs";
 
 const Navbar = () => {
   return (
@@ -33,20 +35,21 @@ const Navbar = () => {
               className="absolute left-2 top-2"
             />
           </div>
-          <div className="flex items-center justify-between space-x-5">
+          <div className="flex items-center justify-between space-x-3">
             <Link href="/">
-              <Image
-                src="/wishlist.png"
-                alt="wishlist"
-                width={24}
-                height={24}
-              />
+              <p className="text-xl">
+                <AiOutlineHeart />
+              </p>
             </Link>
             <Link href="/">
-              <Image src="/profile.png" alt="profile" width={24} height={24} />
+              <p className="text-xl">
+                <AiOutlineUser />
+              </p>
             </Link>
             <Link href="/">
-              <Image src="/bag.png" alt="bag" width={24} height={24} />
+              <p className="text-xl">
+                <BsHandbag />
+              </p>
             </Link>
           </div>
         </div>
