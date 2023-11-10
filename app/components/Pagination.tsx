@@ -22,7 +22,6 @@ const Pagination = ({
   limit,
 }: PaginationProps) => {
   const router = useRouter();
-  console.log({ skip, limit, numberOfPages, total });
   const isPrevBtnDisabled = Number(skip) === 0;
   const isNextBtnDisabled = Number(skip) >= total - Number(limit);
   return (

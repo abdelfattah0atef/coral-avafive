@@ -66,7 +66,6 @@ const ProductPage = async ({ params }: any) => {
           </div>
         </div>
       </div>
-      {/* <ProductCard product={product} /> */}
     </div>
   );
 };

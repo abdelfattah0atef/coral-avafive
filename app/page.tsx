@@ -12,18 +12,14 @@ const getProducts = async () => {
 };
 const Home = async () => {
   const data = await getProducts();
-  // if (!data) {
-  //   <div className="p-5">Loading...</div>;
-  // }
+
   return (
     <>
       <div className="text-center bg-[#F0F0F0] color-[#171520] text-sm width-full p-3 mb-4">
         We are currently experiencing local customs clearance delays. For the
         latest updates, please check your order status here
       </div>
-      <div className="bg-[url('/header-bg.png')] bg-no-repeat bg-cover bg-right-top width-full h-[500px] relative">
-        {/* <div className="absolute right-20 top-20 bg-[#1B4B66] width-200"></div> */}
-      </div>
+      <div className="bg-[url('/header-bg.png')] bg-no-repeat bg-cover bg-right-top width-full h-[500px] relative" />
       <section className="p-5">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl">New Arrivals</h1>
