@@ -1,23 +1,28 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface PaginationProps {
+  path: string;
   numberOfPages: number;
   total: number;
+  skip: string | string[];
+  limit: string | string[];
 }
 
 const disabledClasses =
   "bg-gray-200 cursor-not-allowed hover:bg-gray-200 hover:text-gray-500";
 
-const Pagination = ({ numberOfPages, total }: PaginationProps) => {
+const Pagination = ({
+  path,
+  numberOfPages,
+  total,
+  skip,
+  limit,
+}: PaginationProps) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const skip = searchParams.get("skip") ?? "0";
-  const limit = searchParams.get("limit") ?? "9";
-
+  console.log({ skip, limit, numberOfPages, total });
   const isPrevBtnDisabled = Number(skip) === 0;
   const isNextBtnDisabled = Number(skip) >= total - Number(limit);
   return (
@@ -27,7 +32,7 @@ const Pagination = ({ numberOfPages, total }: PaginationProps) => {
           disabled={isPrevBtnDisabled}
           onClick={() =>
             router.push(
-              `/products?skip=${Number(skip) - Number(limit)}&limit=${limit}`
+              `/${path}?skip=${Number(skip) - Number(limit)}&limit=${limit}`
             )
           }
           className={`flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer ${
@@ -53,9 +58,10 @@ const Pagination = ({ numberOfPages, total }: PaginationProps) => {
         </button>
         {Array.from(Array(numberOfPages).keys()).map((index: number) => (
           <button
+            key={`pagination-${index}`}
             onClick={() =>
               router.push(
-                `/products?skip=${index * Number(limit)}&limit=${limit}`
+                `/${path}?skip=${index * Number(limit)}&limit=${limit}`
               )
             }
             className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
@@ -68,7 +74,7 @@ const Pagination = ({ numberOfPages, total }: PaginationProps) => {
           disabled={isNextBtnDisabled}
           onClick={() =>
             router.push(
-              `/products?skip=${Number(skip) + Number(limit)}&limit=${limit}`
+              `/${path}?skip=${Number(skip) + Number(limit)}&limit=${limit}`
             )
           }
           className={`flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer ${

@@ -40,9 +40,9 @@ const Home = async () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {data.products.map((product: any) => (
-            <div className="col-span-1">
+            <div className="col-span-1" key={product.id}>
               <ProductCard product={product} />
             </div>
           ))}

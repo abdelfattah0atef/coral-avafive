@@ -33,17 +33,28 @@ const ProductsPage = async ({ searchParams }: ProductPageProps) => {
   }
   return (
     <div className="p-5">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-        {data?.products?.map((product: any) => (
-          <div key={product.id} className="col-span-1">
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
+      {!!data.products.length && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {data?.products?.map((product: any) => (
+            <div key={product.id} className="col-span-1">
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      )}
+      {!data?.products?.length && <p>No Data Found</p>}
 
-      <div className="flex items-center justify-center">
-        <Pagination numberOfPages={numberOfPages} total={data.total} />
-      </div>
+      {!!data.products.length && data.total > limit && (
+        <div className="flex items-center justify-center">
+          <Pagination
+            path="products"
+            numberOfPages={numberOfPages}
+            total={data.total}
+            skip={skip}
+            limit={limit}
+          />
+        </div>
+      )}
     </div>
   );
 };

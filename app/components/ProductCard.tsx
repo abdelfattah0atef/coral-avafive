@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const ProductCard = ({ product }: any) => {
   const router = useRouter();
   const handleNavigate = (id: number) => {
-    router.push(`products/${id}`);
+    router.push(`/products/${id}`);
   };
   return (
     <div
